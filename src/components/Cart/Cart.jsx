@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { FaBook } from 'react-icons/fa';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, handleAddToCartCourses }) => {
 
     const { name, image, course_details, price, credit } = cart;
 
@@ -20,7 +20,7 @@ const Cart = ({ cart }) => {
                     <p className='opacity-60 font-medium'>Credit: {credit}hr</p>
                 </div>
                 <div>
-                    <button className='bg-[#2F80ED] text-white font-semibold md:px-24 px-4 py-2 rounded-lg'>Select</button>
+                    <button onClick={()=>handleAddToCartCourses(cart)} className='bg-[#2F80ED] text-white font-semibold md:px-24 px-4 py-2 rounded-lg'>Select</button>
                 </div>
             </div>
         </div>
@@ -28,7 +28,8 @@ const Cart = ({ cart }) => {
 };
 
 Cart.propTypes = {
-    cart: PropTypes.object.isRequired
+    cart: PropTypes.object.isRequired,
+    handleAddToCartCourses: PropTypes.func.isRequired
 };
 
 export default Cart;

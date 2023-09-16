@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
 
-function Home() {
+function Home({ handleAddToCartCourses }) {
 
     const [carts, setCarts] = useState([]);
 
@@ -20,7 +20,11 @@ function Home() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
-                    carts.map(cart => <Cart key={cart.id} cart={cart}></Cart>)
+                    carts.map(cart => <Cart
+                        key={cart.id}
+                        cart={cart}
+                        handleAddToCartCourses={handleAddToCartCourses}
+                    ></Cart>)
                 }
             </div>
 
@@ -29,7 +33,7 @@ function Home() {
 }
 
 Home.propTypes = {
-
+    handleAddToCartCourses: PropTypes.func.isRequired
 };
 
 export default Home;
